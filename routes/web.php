@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\cadastroPacienteController;
+use App\Http\Controllers\cadastroEspecialidadeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,14 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('cadastroPaciente', function () {
+Route::get('/cadastroPaciente', function () {
     return view('cadastroPaciente');
 });
 
+Route::get('/cadastroEspecialidade', function () {
+    return view('cadastroEspecialidade');
+});
+
 Route::post('cadastroNovoPaciente', [cadastroPacienteController::class, 'cadastroNovoPaciente']);
+
+Route::post('cadastroNovaEspecialidade', [cadastroEspecialidadeController::class, 'cadastroNovaEspecialidade']);
