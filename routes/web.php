@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\cadastroPacienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('cadastroPaciente', function () {
+    return view('cadastroPaciente');
+});
+
+Route::post('cadastroNovoPaciente', [cadastroPacienteController::class, 'cadastroNovoPaciente']);
