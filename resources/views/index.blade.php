@@ -18,6 +18,9 @@
     <div id="botaoCadMedico">
         <a href="/cadastroMedico">Cadastro de medico</a>
     </div>
+    <div id="botaoCadConsulta">
+        <a href="/cadastroConsulta">Cadastro da consulta</a>
+    </div>
     
 </body>
 </html>

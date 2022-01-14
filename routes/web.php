@@ -5,6 +5,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\cadastroPacienteController;
 use App\Http\Controllers\cadastroEspecialidadeController;
 use App\Http\Controllers\cadastroMedicoController;
+use App\Http\Controllers\cadastroConsultasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,14 @@ Route::get('/cadastroMedico', function () {
     return view('cadastroMedico');
 });
 
+Route::get('/cadastroConsulta', function () {
+    return view('cadastroConsulta');
+});
+
 Route::post('cadastroNovoPaciente', [cadastroPacienteController::class, 'cadastroNovoPaciente']);
 
 Route::post('cadastroNovaEspecialidade', [cadastroEspecialidadeController::class, 'cadastroNovaEspecialidade']);
 
 Route::post('cadastroNovoMedico', [cadastroMedicoController::class, 'cadastroMedico']);
+
+Route::post('cadastroNovaConsulta', [cadastroConsultasController::class, 'cadastroNovaConsultas']);
