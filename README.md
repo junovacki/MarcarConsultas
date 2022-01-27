@@ -21,7 +21,6 @@ O paciente deverá ser composto por:
 •	CPF;
 
 •	Data/hora de cadastro;
-•	Telefone (Quantidade de telefones é variável);
 
 •	Telefone (Quantidade de telefones é variável)
 
