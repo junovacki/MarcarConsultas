@@ -19,6 +19,7 @@ class Especialidade extends Model
     public function insereEspecialidade($params){
         $select = DB::select("SELECT * FROM especialidade WHERE nomeEspecialidade = ?", [$params['nomeEspecialidade']]);
         $error = [];
+        $params['nomeEspecialidade'] = strtolower($params['nomeEspecialidade']);
 
         if($select != []){
             $error[]='Já existe uma especialidade com esse nome';

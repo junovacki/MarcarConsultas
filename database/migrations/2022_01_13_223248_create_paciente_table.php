@@ -14,12 +14,13 @@ class CreatePacienteTable extends Migration
     public function up()
     {
         Schema::create('paciente', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->string('nome');
+            $table->string('idade');
             $table->string('cpf');
             $table->date('dataCadastro');
             $table->string('telefone');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('cep');
             $table->string('endereco');
             $table->string('numero_casa');

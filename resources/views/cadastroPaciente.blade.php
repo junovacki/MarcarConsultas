@@ -21,8 +21,12 @@
                 <label for="nomePaciente">Nome do paciente: </label>
                 <input type="text" id="nomePaciente" name="nomePaciente" required/>
             </div>
+            <div id="cadastroIdade">
+                <label for="idadePaciente">Idade do paciente: </label>
+                <input type="number" id="idadePaciente" name="idadePaciente" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
+            </div>
             <div id="cadastroCPF">
-                <label for="cpfPaciente">CPF do paciente: </label>
+                <label for="cpfPaciente" id="labelCPF">CPF do paciente: </label>
                 <input type="text" id="cpfPaciente" name="cpfPaciente" required/>
             </div>
             <div id="cadastroData">
@@ -54,7 +58,18 @@
         </form>
     </div>
     <script type="text/javascript">
-		$("#cep").focusout(function(){
+		$("#idadePaciente").change(function(){
+			var idade = $("#idadePaciente").val();
+
+            if(idade < 18){
+                alert('Informe o CPF de um responsável');
+                $("#labelCPF").text('CPF do responsável: ');
+            }else{
+                $("#labelCPF").text('CPF do paciente: ');
+            }
+
+		});
+        $("#cep").focusout(function(){
 			$.ajax({
 				url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
 				dataType: 'json',

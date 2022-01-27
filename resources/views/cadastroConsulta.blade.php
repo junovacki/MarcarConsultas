@@ -9,8 +9,9 @@
 </head>
 <?php
 use Illuminate\Support\Facades\DB;
-      $optionsE = DB::table('medico')->get()->pluck('nomeMedico','id');
-      $optionsP = DB::table('paciente')->get()->pluck('nome','id');
+      $optionsE = DB::table('medico')->get()->pluck('nomeEspecialidade','nomeMedico','id');
+      $optionsP = DB::table('paciente')->get()->pluck('idade', 'nome','id');
+      //dd($optionsP);
       
   ?>
 <body id="body">
@@ -27,8 +28,8 @@ use Illuminate\Support\Facades\DB;
                 <label for="cadastroMedico">Médico: </label>
                 <select name="cadastroMedico" id="cadastroMedico">
                 @foreach ($optionsE as $key => $value)
-                    <option value="{{ $value }}"
-                    >{{ $value }}</option>
+                    <option value="{{ $key }},{{ $value }}"
+                    >{{ $key }}</option>
                 @endforeach
                 </select>
             </div>
@@ -36,8 +37,9 @@ use Illuminate\Support\Facades\DB;
                 <label for="cadastroPaciente">Paciente: </label>
                 <select name="cadastroPaciente" id="cadastroPaciente">
                 @foreach ($optionsP as $key => $value)
-                    <option value="{{ $value }}"
-                    >{{ $value }}</option>
+                    <option value='{{ $key }},{{ $value }}' 
+                    >{{ $key }}</option>
+                    
                 @endforeach
                 </select>
             </div>

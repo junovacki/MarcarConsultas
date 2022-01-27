@@ -12,6 +12,11 @@ class cadastroConsultasController extends Controller
 
         $error = $consultas->insereConsultas($_POST);
 
-        return redirect('/');
+        if($error != []){
+            return redirect()->back()->with('alert', $error[0]);
+        }else{
+            return redirect('/');
+        }
+
     }
 }

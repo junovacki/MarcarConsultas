@@ -20,7 +20,19 @@ class Consultas extends Model
     ];
 
     public function insereConsultas($params){
-        $insert = DB::insert('INSERT INTO consultas (medico, paciente, dataAgentamento, dataConsulta) values (?, ?, ?, ?)', [$params['cadastroMedico'], $params['cadastroPaciente'], $params['cadastroData1'], $params['cadastroData2']]);
-        return true;
+        $paciente = explode(',', $params['cadastroPaciente']);
+        $medico = explode(',', $params['cadastroMedico']);
+        $error = [];
+        if($paciente[1] < 12){
+            if($medico[1] !== 'pediatra'){
+                $error[]='Pacientes com menos de 12 anos devem se consultar apenas com pediatra!!';
+            }else{
+                $insert = DB::insert('INSERT INTO consultas (medico, paciente, dataAgentamento, dataConsulta) values (?, ?, ?, ?)', [$medico[0], $paciente[0], $params['cadastroData1'], $params['cadastroData2']]);
+            }
+        }else{
+            $insert = DB::insert('INSERT INTO consultas (medico, paciente, dataAgentamento, dataConsulta) values (?, ?, ?, ?)', [$medico[0], $paciente[0], $params['cadastroData1'], $params['cadastroData2']]);
+        }
+        
+        return $error;
     }
 }
